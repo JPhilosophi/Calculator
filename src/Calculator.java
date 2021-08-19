@@ -4,9 +4,9 @@ public class Calculator {
 
     public void calculator(){
         reader.reader();
-        if (reader.getNum1() > 10 || reader.getNum2() > 10){
+        //if (reader.getNum1() > 10 || reader.getNum2() > 10){
             System.out.println("Калькулятор работает только с числами от 1 до 10");
-        } else
+      //  } else
             switch (reader.getOperation()){
             case '+': arabicResult = reader.getNum1() + reader.getNum2(); break;
             case '-': arabicResult = reader.getNum1() - reader.getNum2(); break;
