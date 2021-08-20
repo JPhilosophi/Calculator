@@ -1,20 +1,13 @@
 public class Loader {
     public static void main(String[] args) {
+        Reader reader = new Reader();
+        Calculator calculator = new Calculator();
+        EncodeToArab encode = new EncodeToArab();
 
-        //Calculator calculator = new Calculator();
-        //calculator.calculator();
-        //System.out.println(calculator.getArabicResult());
+        calculator.calculator();
+        encode.transform();
 
-        Roman roman = new Roman();
-        roman.decode();
-        roman.getRomeToArab();
-
-        for (int i = 0; i < roman.getRomeToArab().length; i++){
-            System.out.println(roman.getRomeToArab()[i]);
-        }
-
-
-
+        System.out.println(encode.getRomeResult());
 
     }
 }
