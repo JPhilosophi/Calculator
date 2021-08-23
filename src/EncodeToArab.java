@@ -1,6 +1,12 @@
 public class EncodeToArab {
-    Calculator calculator = new Calculator();
+    private final DecodeToRome decode;
+    private final Calculator calculator;
     private String romeResult;
+
+    public EncodeToArab() {
+        this.decode = decode;
+        this.calculator = calculator;
+    }
 
 
     public String transform(){

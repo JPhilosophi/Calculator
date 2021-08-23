@@ -1,12 +1,16 @@
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Reader {
     private String resultString;
-    private String num1;
-    private String num2;
+    private int num1;
+    private int num2;
+    private String rome1;
+    private String rome2;
     private char operation;
+    private boolean isRome;
 
     public void reader() {
         System.out.println("Введите выражение: ");
@@ -16,31 +20,48 @@ public class Reader {
         resultString = sc.nextLine().replaceAll("\\s+", "");
         Matcher matcherArabic = patternArabic.matcher(resultString);
         Matcher matcherRome = patternRome.matcher(resultString);
-        if (matcherArabic.matches()) {
+
+        if (matcherRome.matches()){
+            isRome = true;
+            rome1 = matcherRome.group(1);
+            rome2 = matcherRome.group(3);
+            String builder = matcherArabic.group(2);
+            operation = builder.charAt(0);
+        } else if (matcherArabic.matches()) {
             num1 = matcherArabic.group(1);
             num2 = matcherArabic.group(3);
             String builder = matcherArabic.group(2);
             operation = builder.charAt(0);
-        } else if (matcherRome.matches()) {
-            num1 = matcherRome.group(1);
-            num2 = matcherRome.group(3);
-            String builder = matcherRome.group(2);
-            operation = builder.charAt(0);
-            } else System.out.println("Введено не корректное выражение");
 
+        }
+        else {
+            System.out.println("Введенный данные не соответсвуют ни арабским ни римским");
+        }
 
     }
 
-    public String getNum1(){
+    public int getNum1(){
         return num1;
     }
 
-    public String getNum2(){
+    public int getNum2(){
         return num2;
+    }
+
+    public String getRome1(){
+        return rome1;
+    }
+
+    public String getRome2(){
+        return rome2;
     }
 
     public char getOperation() {
         return operation;
+    }
+
+    public boolean getIsArabic(){
+        return isArabic;
     }
 
 

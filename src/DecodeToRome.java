@@ -1,4 +1,6 @@
 public class DecodeToRome {
+    public static final Reader reader = new Reader();
+    
         private static int decodeSingle(char letter) {
             switch (letter) {
                 case 'M':
@@ -24,7 +26,6 @@ public class DecodeToRome {
         private int[] romeToArab = new int[2];
 
         public int[] decode(){
-            reader.reader();
             int result1 = 0;
             int result2 = 0;
             String uRom1 = reader.getNum1();
