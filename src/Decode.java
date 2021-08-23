@@ -1,7 +1,17 @@
-public class DecodeToRome {
-    public static final Reader reader = new Reader();
-    
-        private static int decodeSingle(char letter) {
+import java.io.IOException;
+
+public class Decode {
+    private final Reader reader;
+    private boolean isArabic;
+
+    public Decode(Reader reader) {
+        this.reader = reader;
+    }
+
+    private int[] num = new int[2];
+    private String[] test = new String[2];
+
+    private static int decodeSingle(char letter) {
             switch (letter) {
                 case 'M':
                     return 1000;
@@ -22,15 +32,19 @@ public class DecodeToRome {
             }
         }
 
-        Reader reader = new Reader();
-        private int[] romeToArab = new int[2];
-
-        public int[] decode(){
+    public int[] decodeRome() throws IOException {
+        if (reader.isArabic() == true){
+            test[0] = reader.getNum1();
+            test[1] = reader.getNum2();
+            num[0] = Integer.parseInt(reader.getNum1());
+            num[1] = Integer.parseInt(reader.getNum2());
+            isArabic = true;
+            return num;
+        }  else {
             int result1 = 0;
             int result2 = 0;
             String uRom1 = reader.getNum1();
             String uRom2 = reader.getNum2();
-
             for(int i = 0; i < uRom1.length() - 1; i++){
                 if (decodeSingle(uRom1.charAt(i)) < decodeSingle(uRom1.charAt(i+1))){
                     result1 -= decodeSingle(uRom1.charAt(i));
@@ -49,14 +63,27 @@ public class DecodeToRome {
             result1 += decodeSingle(uRom1.charAt(uRom1.length() - 1));
             result2 += decodeSingle(uRom2.charAt(uRom2.length() - 1));
 
-            romeToArab[0] = result1;
-            romeToArab[1] = result2;
-            return romeToArab;
+            if (result1 < result2){
+                IOException exception = new IOException();
+                System.out.println(exception.getMessage());
+            } else {
+                num[0] = result1;
+                num[1] = result2;
+            }
+            return num;
         }
+    }
 
 
-        public int[] getRomeToArab(){
-            return romeToArab;
-        }
+    public int[] getNum(){
+        return num;
+    }
 
+    public char getOperation() {
+        return reader.getOperation();
+    }
+
+    public boolean isArabic(){
+        return isArabic;
+    }
 }

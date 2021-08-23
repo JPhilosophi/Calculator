@@ -1,17 +1,21 @@
 public class Calculator {
-    private final Reader reader = reader.reader();
-    private final DecodeToRome decode = decode.decode();
+    private final Decode decode;
     private int num1;
     private int num2;
     private int arabicResult;
+    private boolean isRome;
 
+    public Calculator(Decode decode) {
+        this.decode = decode;
+    }
 
 
     public int calculator(){
-        if (reader.getIsArabic() == true){
-            num1 = Integer.parseInt(reader.getNum1());
-            num2 = Integer.parseInt(reader.getNum2());
-            switch (reader.getOperation()){
+
+        if (decode.isArabic() == true){
+            num1 = decode.getNum()[0];
+            num2 = decode.getNum()[1];
+            switch (decode.getOperation()){
                 case '+': arabicResult = num1 + num2; break;
                 case '-': arabicResult = num1 - num2; break;
                 case '*': arabicResult = num1 * num2; break;
@@ -19,10 +23,9 @@ public class Calculator {
                 default: System.out.println("Операция не распознана. Повторите ввод.");
             }
         } else {
-            int[] decodeResult = decode.getRomeToArab();
-            num1 = decodeResult[0];
-            num2 = decodeResult[1];
-            switch (reader.getOperation()){
+            num1 = decode.getNum()[0];
+            num2 = decode.getNum()[1];
+            switch (decode.getOperation()){
                 case '+': arabicResult = num1 + num2; break;
                 case '-': arabicResult = num1 - num2; break;
                 case '*': arabicResult = num1 * num2; break;
@@ -37,4 +40,5 @@ public class Calculator {
     public int getArabicResult() {
         return arabicResult;
     }
+    public boolean getIsRome() {return isRome;}
 }
