@@ -9,18 +9,17 @@ public class Reader {
     private char operation;
     private boolean isArabic = false;
 
-    public void reader() throws IOException {
+    public void reader() {
         System.out.println("Введите выражение: ");
         Scanner sc = new Scanner(System.in);
         Pattern patternArabic = Pattern.compile("(\\d+)([+\\-\\*\\/])(\\d+)");
-        Pattern patternRome = Pattern.compile("([I-X]+)([+\\-*\\/])([I-X]+)");
+        Pattern patternRome = Pattern.compile("([IVX]+)([+\\-\\*\\/])([IVX]+)");
         String resultString = sc.nextLine().replaceAll("\\s+", "");
         Matcher matcherArabic = patternArabic.matcher(resultString);
         Matcher matcherRome = patternRome.matcher(resultString);
         if (matcherRome.matches()){
-            System.out.println(resultString);
             num1 = matcherRome.group(1);
-            String builder = matcherArabic.group(2);
+            String builder = matcherRome.group(2);
             num2 = matcherRome.group(3);
             operation = builder.charAt(0);
         } else if (matcherArabic.matches()) {

@@ -11,7 +11,6 @@ public class Calculator {
 
 
     public int calculator(){
-
         if (decode.isArabic() == true){
             num1 = decode.getNum()[0];
             num2 = decode.getNum()[1];
@@ -23,6 +22,7 @@ public class Calculator {
                 default: System.out.println("Операция не распознана. Повторите ввод.");
             }
         } else {
+            isRome = true;
             num1 = decode.getNum()[0];
             num2 = decode.getNum()[1];
             switch (decode.getOperation()){

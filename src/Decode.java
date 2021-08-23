@@ -63,13 +63,8 @@ public class Decode {
             result1 += decodeSingle(uRom1.charAt(uRom1.length() - 1));
             result2 += decodeSingle(uRom2.charAt(uRom2.length() - 1));
 
-            if (result1 < result2){
-                IOException exception = new IOException();
-                System.out.println(exception.getMessage());
-            } else {
-                num[0] = result1;
-                num[1] = result2;
-            }
+            num[0] = result1;
+            num[1] = result2;
             return num;
         }
     }
