@@ -17,6 +17,7 @@ public class Reader {
         String resultString = sc.nextLine().replaceAll("\\s+", "");
         Matcher matcherArabic = patternArabic.matcher(resultString);
         Matcher matcherRome = patternRome.matcher(resultString);
+
         if (matcherRome.matches()){
             num1 = matcherRome.group(1);
             String builder = matcherRome.group(2);
@@ -28,10 +29,8 @@ public class Reader {
             num2 = matcherArabic.group(3);
             String builder = matcherArabic.group(2);
             operation = builder.charAt(0);
-
-        }
-        else {
-            System.out.println("Введенный данные не соответсвуют ни арабским ни римским");
+        } else {
+            throw new IllegalArgumentException("строка не выражение");
         }
 
     }

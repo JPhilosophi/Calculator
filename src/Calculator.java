@@ -32,6 +32,7 @@ public class Calculator {
                 case '/': arabicResult = num1 / num2; break;
                 default: System.out.println("Операция не распознана. Повторите ввод.");
             }
+            if (isRome && (num1 < num2)) throw new IllegalArgumentException("в римской системе нет отрицательных чисел");
         }
         arabicResult = Math.round(arabicResult);
         return arabicResult;
