@@ -30,7 +30,7 @@ public class Reader {
             String builder = matcherArabic.group(2);
             operation = builder.charAt(0);
         } else {
-            throw new IllegalArgumentException("строка не выражение");
+            throw new IllegalArgumentException("строка не прошла проверку на математическое выражение");
         }
 
     }
